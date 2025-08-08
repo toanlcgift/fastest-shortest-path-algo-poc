@@ -1,8 +1,5 @@
 ### Breaking the Sorting Barrier for Directed Single-Source Shortest Paths
-
-> https://papers-pdfs.assets.alphaxiv.org/2504.17033v2.pdf
-
----- 
+----
 
 ### Result
 
@@ -30,4 +27,6 @@ Distance agreement (max abs diff on commonly reachable nodes): 8.540939e+01
 | **B′ (bound)**            | —            | 0.0              | Indicates aggressive pruning              |       |                              |
 | \*\*                      | U\_final     | (unresolved)\*\* | —                                         | 2,048 | Nodes BMSSP left unprocessed |
 | **Max Abs Distance Diff** | 0            | 85.41            | Large error on overlapping reachable set  |       |                              |
+
+[alphaxiv](https://papers-pdfs.assets.alphaxiv.org/2504.17033v2.pdf)
 
