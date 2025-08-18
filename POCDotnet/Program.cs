@@ -9,9 +9,9 @@ public class Program
         parser.AddArgument("-s", "--seed", 0, "seed");
         var parsedArgs = parser.Parse(args);
 
-        //int nodes = (int)parsedArgs["nodes"];
-        //int edges = (int)parsedArgs["edges"];
-        //int seed = (int)parsedArgs["seed"];
+        int nodes = parser.GetValue<int>("-n");
+        int edges = parser.GetValue<int>("-m");
+        int seed = parser.GetValue<int>("-s");
 
         RunSingleTest(200000, 800000, 0);
     }
@@ -375,6 +375,7 @@ public class Program
 
         while (heap.Count > 0)
         {
+            Console.WriteLine("Dequeue Dijkstra heap.Count = " + heap.Count);
             var (dU, u) = heap.Dequeue();
             instr.HeapOps++;
             if (dU > dist[u]) continue;
