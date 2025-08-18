@@ -373,7 +373,7 @@ public class Program
         heap.Enqueue((0.0, source));
         instr.HeapOps++;
 
-        while (heap.Count > 0)
+        while (dist.Count < (source + 1))
         {
             Console.WriteLine("Dequeue Dijkstra heap.Count = " + heap.Count);
             var (dU, u) = heap.Dequeue();
