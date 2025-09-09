@@ -2,10 +2,9 @@
 
 namespace POCDotnet
 {
-
-	// ---------------------------
-	// DataStructure D (practical)
-	// ---------------------------
+	/// <summary>
+	/// DataStructure D (practical)
+	/// </summary>
 	public class DataStructureD
 	{
 		private readonly PriorityQueue<Node, double> _heap = new();

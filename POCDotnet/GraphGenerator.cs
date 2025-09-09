@@ -3,10 +3,9 @@ using Graph = System.Collections.Generic.Dictionary<int, System.Collections.Gene
 
 namespace POCDotnet
 {
-
-	// ---------------------------
-	// Utilities & Graph generator
-	// ---------------------------
+	/// <summary>
+	/// Utilities & Graph generator
+	/// </summary>
 	public static class GraphGenerator
 	{
 		public static (Graph, List<Edge>) GenerateSparseDirectedGraph(int n, int m, double maxW = 100.0, int? seed = null)

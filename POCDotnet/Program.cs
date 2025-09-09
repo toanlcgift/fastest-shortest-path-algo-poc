@@ -1,18 +1,9 @@
-﻿// BmsspFullImpl.cs
-// .NET 6+ (uses PriorityQueue and Linq.MinBy)
-
-using POCDotnet;
-
-namespace BMSSP
+﻿namespace POCDotnet
 {
-	// ---------------------------
-	// CLI main
-	// ---------------------------
 	public static class Program
 	{
 		public static void Main(string[] args)
 		{
-			// Simple args: -n <int> -m <int> -s <int>
 			int n = 200_000, m = 800_000, seed = 0;
 			for (int i = 0; i < args.Length - 1; i++)
 			{

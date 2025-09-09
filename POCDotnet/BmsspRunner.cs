@@ -4,11 +4,9 @@ using Node = System.Int32;
 
 namespace POCDotnet
 {
-
-
-	// ---------------------------
-	// BMSSP (practical recursive)
-	// ---------------------------
+	/// <summary>
+	/// BMSSP (practical recursive)
+	/// </summary>
 	public static class BmsspRunner
 	{
 		private static (int tParam, int kParam) GetParams(int n)

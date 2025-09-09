@@ -3,11 +3,9 @@ using Node = System.Int32;
 
 namespace POCDotnet
 {
-
-
-	// ---------------------------
-	// FIND_PIVOTS (practical bounded BF)
-	// ---------------------------
+	/// <summary>
+	/// FIND_PIVOTS (practical bounded BF)
+	/// </summary>
 	public static class PivotFinder
 	{
 		public static (HashSet<Node> P, HashSet<Node> W) FindPivots(

@@ -4,9 +4,9 @@ using Weight = System.Double;
 
 namespace POCDotnet
 {
-	// ---------------------------
-	// Dijkstra
-	// ---------------------------
+	/// <summary>
+	/// Dijkstra
+	/// </summary>
 	public static class ShortestPath
 	{
 		public static Dictionary<Node, Weight> Dijkstra(Graph graph, Node source, Instrument? instr = null)

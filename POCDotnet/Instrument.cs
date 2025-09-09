@@ -1,8 +1,8 @@
 ﻿namespace POCDotnet
 {
-	// ---------------------------
-	// Instrumentation
-	// ---------------------------
+	/// <summary>
+	/// Instrumentation
+	/// </summary>
 	public class Instrument
 	{
 		public long Relaxations { get; set; }

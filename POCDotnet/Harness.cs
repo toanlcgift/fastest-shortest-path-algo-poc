@@ -1,13 +1,10 @@
-﻿using BMSSP;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace POCDotnet
 {
-
-
-	// ---------------------------
-	// Test harness (similar to run_single_test)
-	// ---------------------------
+	/// <summary>
+	/// Test harness (similar to run_single_test)
+	/// </summary>
 	public static class Harness
 	{
 		public static void RunSingleTest(int n, int m, int seed = 0, int source = 0)

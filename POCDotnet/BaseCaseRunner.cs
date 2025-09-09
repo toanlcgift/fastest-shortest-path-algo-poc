@@ -3,11 +3,9 @@ using Node = System.Int32;
 
 namespace POCDotnet
 {
-
-
-	// ---------------------------
-	// BASECASE (Dijkstra-like limited)
-	// ---------------------------
+	/// <summary>
+	/// BASECASE (Dijkstra-like limited)
+	/// </summary>
 	public static class BaseCaseRunner
 	{
 		public static (double BPrime, HashSet<Node> Uo) Run(
