@@ -59,3 +59,13 @@ Use the following command to run the application:
 - `-n` or `--nodes`: Number of nodes in the graph (default: 200,000).  
 - `-m` or `--edges`: Number of edges in the graph (default: 800,000).  
 - `-s` or `--seed`: Random seed for graph generation (default: 0).  
+
+### C# Output => <b> running faster than python</b>
+```shell
+Generating graph: n=200000, m=800000, seed=0
+Graph generated. avg out-degree ≈ 4.000
+Dijkstra: time=0.356301s, relaxations=800000, heap_ops=533202, reachable=200000
+BMSSP params: top-level l=2
+BMSSP: time=0.054503s, relaxations=26910, reachable=8788, B'=0, |U_final|=2048
+Distance agreement (max abs diff on commonly reachable nodes): 8.073533E+001
+```
