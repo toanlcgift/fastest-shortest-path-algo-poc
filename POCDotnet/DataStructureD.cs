@@ -1,79 +1,77 @@
-﻿namespace POCDotnet
+﻿using Node = System.Int32;
+
+namespace POCDotnet
 {
 
-    public class DataStructureD
-    {
-        private List<(double Key, int Node)> heap;
-        private Dictionary<int, double> best;
-        private int M;
-        private double BUpper;
-        private int blockSize;
+	// ---------------------------
+	// DataStructure D (practical)
+	// ---------------------------
+	public class DataStructureD
+	{
+		private readonly PriorityQueue<Node, double> _heap = new();
+		private readonly Dictionary<Node, double> _best = new();
+		private readonly int _blockSize;
+		private readonly int _M;
+		private readonly double _BUpper;
 
-        public DataStructureD(int M, double BUpper, int? blockSize = null)
-        {
-            this.heap = new List<(double, int)>();
-            this.best = new Dictionary<int, double>();
-            this.M = Math.Max(1, M);
-            this.BUpper = BUpper;
-            this.blockSize = blockSize ?? Math.Max(1, this.M / 8);
-        }
+		public DataStructureD(int M, double BUpper, int? blockSize = null)
+		{
+			_M = Math.Max(1, M);
+			_BUpper = BUpper;
+			_blockSize = blockSize ?? Math.Max(1, _M / 8);
+		}
 
-        public void Insert(int v, double key)
-        {
-            if (!best.TryGetValue(v, out var prev) || key < prev)
-            {
-                best[v] = key;
-                heap.Add((key, v));
-                heap.Sort((a, b) => a.Key.CompareTo(b.Key));
-            }
-        }
+		public void Insert(Node v, double key)
+		{
+			if (!_best.TryGetValue(v, out var prev) || key < prev)
+			{
+				_best[v] = key;
+				_heap.Enqueue(v, key);
+			}
+		}
 
-        public void BatchPrepend(IEnumerable<(int Node, double Key)> pairs)
-        {
-            foreach (var (v, key) in pairs)
-            {
-                Insert(v, key);
-            }
-        }
+		public void BatchPrepend(IEnumerable<(Node v, double key)> items)
+		{
+			foreach (var (v, key) in items) Insert(v, key);
+		}
 
-        private void Cleanup()
-        {
-            while (heap.Count > 0 && (!best.ContainsKey(heap[0].Node) || best[heap[0].Node] != heap[0].Key))
-            {
-                heap.RemoveAt(0);
-            }
-        }
+		private void Cleanup()
+		{
+			// remove stale heap entries
+			while (_heap.Count > 0)
+			{
+				if (_heap.TryPeek(out var v, out var key))
+				{
+					if (_best.TryGetValue(v, out var val) && val == key) break;
+					_heap.Dequeue(); // stale
+				}
+			}
+		}
 
-        public bool IsEmpty()
-        {
-            Cleanup();
-            return heap.Count == 0;
-        }
+		public bool Empty()
+		{
+			Cleanup();
+			return _heap.Count == 0;
+		}
 
-        public (double Bi, HashSet<int> Si) Pull()
-        {
-            Cleanup();
-            if (heap.Count == 0)
-            {
-                throw new InvalidOperationException("Pull from empty DataStructureD");
-            }
-
-            double Bi = heap[0].Key;
-            var Si = new HashSet<int>();
-
-            while (heap.Count > 0 && Si.Count < blockSize)
-            {
-                var (key, v) = heap[0];
-                heap.RemoveAt(0);
-
-                if (best.TryGetValue(v, out var bestKey) && bestKey == key)
-                {
-                    Si.Add(v);
-                    best.Remove(v);
-                }
-            }
-
-            return (Bi, Si);
-        }
-    }
+		public (double Bi, HashSet<Node> Si) Pull()
+		{
+			Cleanup();
+			if (_heap.Count == 0) throw new InvalidOperationException("pull from empty D");
+			_heap.TryPeek(out _, out var Bi);
+			var Si = new HashSet<Node>();
+			while (_heap.Count > 0 && Si.Count < _blockSize)
+			{
+				if (_heap.TryDequeue(out var v, out var key))
+				{
+					if (_best.TryGetValue(v, out var val) && val == key)
+					{
+						Si.Add(v);
+						_best.Remove(v);
+					}
+				}
+			}
+			return (Bi, Si);
+		}
+	}
 }

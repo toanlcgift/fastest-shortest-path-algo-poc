@@ -1,14 +1,12 @@
 ﻿namespace POCDotnet
 {
-    public class Instrument
-    {
-        public int Relaxations { get; set; }
-        public int HeapOps { get; set; }
-
-        public void Reset()
-        {
-            Relaxations = 0;
-            HeapOps = 0;
-        }
-    }
+	// ---------------------------
+	// Instrumentation
+	// ---------------------------
+	public class Instrument
+	{
+		public long Relaxations { get; set; }
+		public long HeapOps { get; set; }
+		public void Reset() { Relaxations = 0; HeapOps = 0; }
+	}
 }
