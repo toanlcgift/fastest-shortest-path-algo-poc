@@ -30,3 +30,32 @@ Distance agreement (max abs diff on commonly reachable nodes): 8.540939e+01
 
 [alphaxiv](https://papers-pdfs.assets.alphaxiv.org/2504.17033v2.pdf)
 
+
+# POC Dotnet Project  
+
+## Overview  
+This project demonstrates a .NET-based implementation of a graph processing application. It includes a CLI interface for configuring the number of nodes, edges, and a random seed for generating graph data.  
+
+## Features  
+- Command-line interface for input configuration.  
+- Efficient graph processing using .NET 9 features.  
+- Supports large-scale graph data with customizable parameters.  
+
+## Requirements  
+- .NET 9 SDK  
+- C# 13.0  
+
+## Usage  
+
+### Build the Project  
+1. Clone the repository.  
+2. Open the project in Visual Studio.  
+3. Build the solution.  
+
+### Run the Application  
+Use the following command to run the application:
+### Example
+### Parameters  
+- `-n` or `--nodes`: Number of nodes in the graph (default: 200,000).  
+- `-m` or `--edges`: Number of edges in the graph (default: 800,000).  
+- `-s` or `--seed`: Random seed for graph generation (default: 0).  
